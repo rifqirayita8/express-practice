@@ -33,6 +33,10 @@ module.exports = {
         allowNull: false,
         type: DataTypes.DATE,
       },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }
     });
   },
 

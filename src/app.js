@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
-import studentRoutes from './routes/student.js';
+import studentRoutes from './routes/authRoutes.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 const app= express();
