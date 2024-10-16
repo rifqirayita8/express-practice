@@ -18,6 +18,11 @@ const Student= sequelize.define('Student', {
     password: {
         type: DataTypes.STRING,
         allowNull: false,
+    },
+    role: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        defaultValue: 'student'
     }
 });
 

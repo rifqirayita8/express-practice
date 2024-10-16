@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { loginStudent } from '../repositories/authRepository.js';
+import { findStudentByEmail } from '../repositories/authRepository.js';
 import { ValidationError } from '../utils/customErrors.js';
 import { validateLoginData } from '../validations/studentLoginValidation.js';
 import { generateToken } from '../utils/jwtHelper.js';
@@ -12,7 +12,7 @@ export const loginStudentService= async (loginData) => {
         throw new ValidationError(`Validation rusak: ${errorMessages}`);
     }
 
-    const user= await loginStudent(loginData.email);
+    const user= await findStudentByEmail(loginData.email);
     if (!user) {
         throw new ValidationError('Email belum terdaftar');
     }

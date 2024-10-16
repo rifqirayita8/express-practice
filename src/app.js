@@ -2,6 +2,7 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import authRouter from './routes/auth/authRoute.js';
+import latihan from './routes/other/latihan.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 const app= express();
@@ -23,6 +24,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 app.use('/student',authRouter);
+
+app.use(latihan);
 
 app.get('/tes', (req, res) => {
     res.json('rifqi gantenkk');

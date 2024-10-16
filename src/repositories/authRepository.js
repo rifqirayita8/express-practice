@@ -4,7 +4,7 @@ export const registerStudent= async (studentData) => {
     return await Student.create(studentData);
 };
 
-export const loginStudent= async (email) => {
+export const findStudentByEmail= async (email) => {
     return await Student.findOne({ where: { email } });
 };
 
