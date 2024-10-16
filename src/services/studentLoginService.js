@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import { loginStudent } from '../repositories/authRepository.js';
 import { ValidationError } from '../utils/customErrors.js';
 import { validateLoginData } from '../validations/studentLoginValidation.js';
-import { generateToken } from '../utils/jwt.js';
+import { generateToken } from '../utils/jwtHelper.js';
 
 export const loginStudentService= async (loginData) => {
     try {

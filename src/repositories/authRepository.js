@@ -7,3 +7,8 @@ export const registerStudent= async (studentData) => {
 export const loginStudent= async (email) => {
     return await Student.findOne({ where: { email } });
 };
+
+export const readStudent= async () => {
+    const student= await Student.findAll();
+    return student.map(student => student.name);
+}

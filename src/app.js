@@ -1,11 +1,11 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
-import studentRoutes from './routes/authRoutes.js';
+import authRouter from './routes/auth/authRoute.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 const app= express();
-const port= 3000;
+const port= process.env.APP_PORT;
 
 app.use(cors(
     {
@@ -22,7 +22,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended: true}));
 
-app.use('/student',studentRoutes);
+app.use('/student',authRouter);
 
 app.get('/tes', (req, res) => {
     res.json('rifqi gantenkk');
