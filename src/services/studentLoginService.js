@@ -2,6 +2,7 @@ import bcrypt from 'bcrypt';
 import { loginStudent } from '../repositories/authRepository.js';
 import { ValidationError } from '../utils/customErrors.js';
 import { validateLoginData } from '../validations/studentLoginValidation.js';
+import { generateToken } from '../utils/jwt.js';
 
 export const loginStudentService= async (loginData) => {
     try {
@@ -13,11 +14,13 @@ export const loginStudentService= async (loginData) => {
 
     const user= await loginStudent(loginData.email);
     if (!user) {
-        throw new ValidationError('Email atau password salah');
+        throw new ValidationError('Email belum terdaftar');
     }
 
     const isValidPassword= await bcrypt.compare(loginData.password, user.password);
     if (!isValidPassword) {
-        throw new ValidationError('Email atau password salah');
+        throw new ValidationError('Password salah');
     }
+    const token= generateToken(user);
+    return { token, user };
 }
