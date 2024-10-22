@@ -2,8 +2,9 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import authRouter from './routes/auth/authRoute.js';
-import latihan from './routes/other/latihan.js';
+import latihan from './routes/other/latihanRoute.js';
 import { errorHandler } from './middleware/errorHandler.js';
+import helmet from 'helmet';
 
 const app= express();
 const port= process.env.APP_PORT;
@@ -22,6 +23,8 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use(express.urlencoded({extended: true}));
+
+app.use(helmet());
 
 app.use('/student',authRouter);
 
