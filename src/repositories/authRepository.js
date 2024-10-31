@@ -12,8 +12,11 @@ export const findStudentById= async (id) => {
     return await Student.findByPk(id);
 }
 
-export const readStudent= async () => {
-    const student= await Student.findAll();
+export const readStudent= async (offset, limit) => {
+    const student= await Student.findAll({
+      offset: offset,
+      limit: limit
+    });
     return student.map(student => ({
         id: student.id,
         name: student.name,
