@@ -11,7 +11,10 @@ export const readDataController= async (req, res, next) => {
             "message": 'No students found'
           });
         }
-        res.json(studentNames);
+        res.json({
+            "message": 'Students found',
+            "payload": studentNames
+        });
     } catch(err) {
         next(err);
     }

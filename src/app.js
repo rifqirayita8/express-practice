@@ -11,7 +11,7 @@ const port= process.env.APP_PORT;
 
 app.use(cors(
     {
-        origin: 'http://adult.com',
+        origin: '*',
         credentials: true,
     }
 ));
